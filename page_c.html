@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kankangwal M. - Portfolio</title>
+    <!-- Icon Library (FontAwesome) สำหรับ Icons ปุ่มและ Social Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+           RESET & GLOBAL STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050f5a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            /* ลบขอบนอกรอบตัวเว็บออก */
+            padding: 0;
+            /* ลบขอบในรอบตัวเว็บออก */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ==========================================
+           HEADER & NAVBAR
+           ========================================== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 50px;
+            /* ระยะห่างขอบขวาสำหรับเมนู */
+            padding-left: 9px;
+            /* ปรับให้ขอบซ้ายเป็น 0 เพื่อให้บล็อกฝั่งซ้ายชิดขอบสุด */
+            background-color: #01041c;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            width: 100%;
+        }
+
+        .navbar .logo {
+            margin-right: auto;
+            /* ดันชื่อชิดซ้ายสุด และผลักเมนูทั้งหมดไปอยู่ฝั่งขวาตามเดิม */
+            color: #ffffff;
+            /* สีขาวบริสุทธิ์ */
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-block;
+            transform-origin: left;
+            transform: scaleX(0.85);
+            /* ปรับความผอม-ยืดของชื่อ */
+            letter-spacing: 2px;
+            /* ปรับระยะห่างตัวอักษร */
+
+        }
+
+        .navbar nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .navbar nav a {
+            color: #ffffff;
+            /* เปลี่ยนเป็นสีขาวบริสุทธิ์ */
+            text-decoration: none;
+            font-size: 0.9rem;
+
+            /* ปรับความยืด-ผอมของตัวอักษรเมนู */
+            letter-spacing: 1px;
+            /* ยืดระยะห่างตัวอักษร */
+            display: inline-block;
+            transform: scaleX(0.9);
+            /* ปรับผอม-ยืด (น้อยกว่า 1 = ผอม, มากกว่า 1 = ยืด) */
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar nav a:hover {
+            color: #ffffff;
+        }
+
+        /* ==========================================
+           COMMON LAYOUT GRID & DIVIDER
+           ========================================== */
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 40px 0;
+        }
+
+        /* ==========================================
+           BUTTONS & ICONS
+           ========================================== */
+        .btn-group {
+            position: relative;
+            top: -0px;
+            /* ปรับขึ้น (-) หรือลง (+) */
+            left: 0px;
+            /* ปรับซ้าย (-) หรือขวา (+) */
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .btn-primary {
+            background-color: #7b8ec8;
+            color: #030939;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-icon:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ==========================================
+           HERO SECTION
+           ========================================== */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            gap: 40px;
+            padding: 60px 0;
+        }
+
+        .hero-title {
+            position: relative;
+            /* เปิดโหมดปรับตำแหน่งอิสระ */
+            top: -100px;
+            /* ปรับขึ้น (-) หรือลง (+) เช่น 15px หรือ -10px */
+            left: 0px;
+            /* ปรับซ้าย (-) หรือขวา (+) เช่น 20px หรือ -15px */
+            z-index: 5;
+            /* กำหนดชั้นความลอยของข้อความ */
+        }
+
+        .hero-desc {
+            position: relative;
+            top: -70px;
+            /* ปรับขึ้น (-) หรือลง (+) เช่น 10px หรือ -15px */
+            left: 0px;
+            /* ปรับซ้าย (-) หรือขวา (+) เช่น 20px หรือ -10px */
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 16px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ==========================================
+           ABOUT SECTION
+           ========================================== */
+        .about-heading {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            color: #a0a7cc;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .margin-top {
+            margin-top: 20px;
+        }
+
+        .about-banner-img {
+            margin-top: 40px;
+            background-color: transparent;
+            border-radius: 16px;
+        }
+
+        .about-banner-img img {
+            width: 100%;
+            height: 450px;
+            object-fit: contain;
+            border-radius: 16px;
+        }
+
+        /* ==========================================
+           CAPABILITIES SECTION
+           ========================================== */
+        .capabilities-desc {
+            color: #a0a7cc;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .skills-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-badge {
+            padding: 8px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================
+           EXPERIENCE SECTION
+           ========================================== */
+        .exp-item {
+            margin-bottom: 35px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .exp-role {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .exp-date {
+            color: #a0a7cc;
+            font-size: 0.85rem;
+        }
+
+        .exp-desc {
+            color: #a0a7cc;
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================
+           CONTACT SECTION & FORM
+           ========================================== */
+        .contact-sub {
+            color: #a0a7cc;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-sub a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            color: #a0a7cc;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffffff;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            color: #a0a7cc;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background-color: #0b144d;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 12px 15px;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #7b8ec8;
+        }
+
+        .contact-form .btn {
+            align-self: flex-start;
+            margin-top: 10px;
+        }
+
+        /* ==========================================
+           FOOTER
+           ========================================== */
+        .footer {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            font-size: 0.8rem;
+            color: #a0a7cc;
+        }
+
+        /* ==========================================
+           RESPONSIVE DESIGN
+           ========================================== */
+        @media (max-width: 768px) {
+
+            .section-grid,
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                padding: 20px;
+            }
+        }
+
+        /* ==========================================
+           1. ปรับขนาดรูปภาพแบบอิสระ
+           ========================================== */
+
+        /* รูปโปรไฟล์ Hero Section */
+        .hero-image img {
+            width: 400px;
+            /* ปรับความกว้าง ( px, %, หรือ vw ) */
+            height: 500px;
+            /* ปรับความสูง (กำหนดเลขเองได้ เช่น 450px) */
+            object-fit: cover;
+            /* ครอบรูปไม่ให้เบี้ยว */
+        }
+
+        /* ==========================================
+           2. ปรับตัวอักษรหัวข้อ (ความสูง/ความยืด/ความกว้าง)
+           ========================================== */
+
+        .hero-title,
+        .section-title {
+            /* ปรับความสูงบรรทัด (ยิ่งเยอะ ยิ่งเว้นระยะห่างบรรทัดสูง) */
+            line-height: 1.1;
+
+            /* ปรับความกว้างยืด/หด ระหว่างอักษร (ติดลบคือชิดกัน, เป็นบวกคือยืดออก) */
+            letter-spacing: 1.5px;
+
+            /* ปรับสเกลความกว้าง-สูงของตัวอักษรแบบอิสระ (ยืด/บีบ ตัวอักษร) */
+            transform: scaleX(0.5) scaleY(1);
+        }
+
+        /* ตัวอย่างปรับเจาะจงเฉพาะหัวข้อใหญ่ Hero Title */
+        .hero-title {
+            font-size: 100px;
+            /* ขนาดตัวอักษร */
+            letter-spacing: 6px;
+            /* ความยืดกว้างของตัวอักษร */
+            line-height: 1;
+            /* ความสูงของบรรทัด */
+            /* วิธีที่ 1: ขยับด้วย Margin (ดันจากซ้ายไปขวา หรือใส่ติดลบเพื่อชิดซ้ายขึ้น) */
+            margin-left: -200px;
+            /* เพิ่มตัวเลขเพื่อดันไปทางขวา เช่น 20px */
+            white-space: nowrap;
+            /* ห้ามตัดขึ้นบรรทัดใหม่ */
+        }
+
+        #about .section-title,
+        .about-section .section-title {
+            position: relative;
+            /* เปิดโหมดขยับตำแหน่งอิสระ */
+            top: 0px;
+            /* ปรับขึ้น (-) หรือลง (+) เช่น -10px หรือ 15px */
+            left: 0px;
+            /* ปรับซ้าย (-) หรือขวา (+) เช่น -20px หรือ 25px */
+
+            color: #ffffff;
+            /* เปลี่ยนเป็นสีขาวบริสุทธิ์ */
+            display: inline-block;
+            transform-origin: left;
+            font-size: 5rem;
+            /* ปรับความยืด-ผอมทรงตัวอักษร (เหมือน HI, I AM) */
+            transform: scaleX(0.5);
+            /* ค่าน้อยกว่า 1 = ผอม/บีบเข้า, มากกว่า 1 = ยืดออก */
+            letter-spacing: 2px;
+            /* ระยะห่างระหว่างตัวอักษร */
+            z-index: 5;
+            white-space: nowrap;
+            /* ห้ามตัดขึ้นบรรทัดใหม่ */
+        }
+
+        /* ==========================================
+           ปรับแต่งตำแหน่งข้อความส่วน LET'S CONNECT แบบอิสระ
+           ========================================== */
+
+        /* 1. คุมตำแหน่งบล็อกข้อความฝั่งซ้ายทั้งหมดของ CONTACT SECTION */
+        #contact .section-left {
+            position: relative;
+            top: 0px;
+            /* 🔹 ขยับ ทั้งบล็อกขึ้น (-) หรือ ลง (+) เช่น -20px, 15px */
+            left: -90px;
+            /* 🔹 ขยับ ทั้งบล็อกไปซ้าย (-) หรือ ขวา (+) เช่น -10px, 20px */
+            z-index: 5;
+        }
+
+        /* 2. ปรับตำแหน่งเฉพาะหัวข้อ "LET'S CONNECT" */
+        #contact .section-title {
+            position: relative;
+            top: 0px;
+            /* 🔹 ขยับขึ้น-ลง */
+            left: 0px;
+            /* 🔹 ขยับซ้าย-ขวา */
+            margin-bottom: 15px;
+            /* ระยะห่างจากข้อความอีเมลด้านล่าง */
+        }
+
+        /* 3. ปรับตำแหน่งเฉพาะกลุ่มข้อความอีเมล & Resume (Say hello at... / For more info...) */
+        .contact-sub {
+            position: relative;
+            top: 0px;
+            /* 🔹 ขยับขึ้น-ลง */
+            left: 90px;
+            /* 🔹 ขยับซ้าย-ขวา */
+            color: #a0a7cc;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            /* ระยะห่างระหว่างบรรทัด */
+        }
+
+        .contact-sub a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* 4. ปรับตำแหน่งกลุ่มไอคอน Social Links ด้านล่าง */
+        #contact .social-links {
+            position: relative;
+            top: 0px;
+            /* 🔹 ขยับขึ้น-ลง */
+            left: 92px;
+            /* 🔹 ขยับซ้าย-ขวา */
+            margin-top: 30px;
+            /* ระยะห่างจากข้อความด้านบน */
+        }
+
+        /* ==========================================
+           1. ปรับตำแหน่งส่วน MY CAPABILITIES แบบอิสระ
+           ========================================== */
+
+        /* ฝั่งซ้าย: หัวข้อ "MY CAPABILITIES" */
+        .capabilities-section .section-left {
+            position: relative;
+            top: 0px;
+            /* 🔹 ขยับ ขึ้น (-) หรือ ลง (+) เช่น -15px, 20px */
+            left: -90px;
+            /* 🔹 ขยับ ซ้าย (-) หรือ ขวา (+) เช่น -10px, 30px */
+            z-index: 5;
+        }
+
+        /* ฝั่งขวา: คำอธิบาย + รายชื่อ Skills Badge */
+        .capabilities-section .section-right {
+            position: relative;
+            top: 0px;
+            /* 🔹 ขยับ ขึ้น (-) หรือ ลง (+) */
+            left: 0px;
+            /* 🔹 ขยับ ซ้าย (-) หรือ ขวา (+) */
+        }
+
+
+        /* ==========================================
+           2. ปรับตำแหน่งส่วน MY EXPERIENCE แบบอิสระ
+           ========================================== */
+
+        /* ฝั่งซ้าย: หัวข้อ "MY EXPERIENCE" */
+        .experience-section .section-left {
+            position: relative;
+            top: 0px;
+            /* 🔹 ขยับ ขึ้น (-) หรือ ลง (+) เช่น -15px, 20px */
+            left: -90px;
+            /* 🔹 ขยับ ซ้าย (-) หรือ ขวา (+) เช่น -10px, 30px */
+            z-index: 5;
+        }
+
+        /* ฝั่งขวา: รายการประสบการณ์ทำงานทั้งหมด */
+        .experience-section .section-right {
+            position: relative;
+            top: 0px;
+            /* 🔹 ขยับ ขึ้น (-) หรือ ลง (+) */
+            left: 0px;
+            /* 🔹 ขยับ ซ้าย (-) หรือ ขวา (+) */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">Kankangwal Minkaew</div>
+        <nav>
+            <ul>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">HI, I AM<br>Kankangwal M.</h1>
+                <p class="hero-desc">
+                    นักพัฒนาเว็บไซต์ที่หลงใหลในการสร้างสรรค์ประสบการณ์เว็บที่ดีเยี่ยม
+                    พร้อมส่งมอบงานที่มีคุณภาพและตอบโจทย์ผู้ใช้
+                </p>
+                <div class="btn-group">
+                    <a href="#contact" class="btn btn-primary">CONTACT ME <i class="fas fa-arrow-down"></i></a>
+                    <a href="#" class="btn-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="btn-icon"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="./images/image 1.png" alt="Chanintorn Profile">
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- About Me Section -->
+        <section id="about" class="about-section">
+            <div class="section-grid">
+                <div class="section-left">
+                    <h2 class="section-title">ABOUT ME</h2>
+                </div>
+                <div class="section-right">
+                    <h3 class="about-heading">
+                        ผมเป็นนักพัฒนาเว็บไซต์ฝั่งฟรอนต์เอนด์ที่ทำงานอยู่ในกรุงเทพฯ
+                        กำลังมองหาโอกาสที่น่าตื่นเต้นในการทำงานมีพื้นฐานการศึกษาด้านวิศวกรรมซอฟต์แวร์
+                    </h3>
+                    <p class="about-text">
+                        มีความสนใจในเทคโนโลยีใหม่ๆ ชอบเรียนรู้สิ่งใหม่ๆ อยู่เสมอ มีความรับผิดชอบสูง
+                        ทำงานร่วมกับผู้อื่นได้ดี มีทักษะในการสื่อสารและแก้ปัญหาได้ดีเยี่ยม
+                        งานอดิเรกคือการอ่านหนังสือ ฟังเพลง และเล่นเกม
+                    </p>
+                    <div class="btn-group margin-top">
+                        <a href="#" class="btn btn-primary">DOWNLOAD RESUME <i class="fas fa-download"></i></a>
+                        <a href="#" class="btn-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="btn-icon"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="about-banner-img">
+                <img src="./images/image2.png" alt="Working Banner">
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Capabilities Section -->
+        <section class="capabilities-section">
+            <div class="section-grid">
+                <div class="section-left">
+                    <h2 class="section-title">MY CAPABILITIES</h2>
+                </div>
+                <div class="section-right">
+                    <p class="capabilities-desc">
+                        ผมพร้อมสำหรับการทำงานในตำแหน่งต่างๆ อยู่เสมอ โดยมีความเชี่ยวชาญด้านฟรอนต์เอนด์
+                        และทักษะอื่นๆ ดังนี้
+                    </p>
+                    <div class="skills-wrapper">
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">JAVASCRIPT</span>
+                        <span class="skill-badge">FLUTTER</span>
+                        <span class="skill-badge">DART</span>
+                        <span class="skill-badge">C++</span>
+                        <span class="skill-badge">REACT</span>
+                        <span class="skill-badge">DATABASE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Experience Section -->
+        <section class="experience-section">
+            <div class="section-grid">
+                <div class="section-left">
+                    <h2 class="section-title">MY EXPERIENCE</h2>
+                </div>
+                <div class="section-right">
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3 class="exp-role">Freelance Developer</h3>
+                            <span class="exp-date">Nov 2023 – Present</span>
+                        </div>
+                        <p class="exp-desc">
+                            พัฒนาและปรับปรุงเว็บไซต์ให้กับลูกค้า โดยใช้เทคโนโลยี เช่น React, HTML/CSS
+                            ร่วมกับ UX/UI เพื่อสร้างประสบการณ์ผู้ใช้ที่ดีเยี่ยม ตอบโจทย์ตามความต้องการของลูกค้า
+                        </p>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <h3 class="exp-role">Front-End Intern</h3>
+                            <span class="exp-date">Sep 2023 – Nov 2023</span>
+                        </div>
+                        <p class="exp-desc">
+                            ช่วยพัฒนาเว็บไซต์โดยใช้ HTML, CSS และ JavaScript คำนึงถึงการเข้าถึง (Accessibility)
+                            และเขียนโค้ดตามมาตรฐาน WCAG ทำงานร่วมกับทีมเพื่อเชื่อมต่อ API
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="section-grid">
+                <div class="section-left">
+                    <h2 class="section-title">LET'S CONNECT</h2>
+                    <p class="contact-sub">Say hello at <a
+                            href="mailto:chanintorn@email.ac.th">Kankangwal@email.ac.th</a></p>
+                    <p class="contact-sub">For more info, here's my <a href="#">resume</a></p>
+
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="section-right">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Created by SAAUtes Team</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,45 +1,294 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kankangwal Profile 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Design by HTML CSS</title>
+
+    <!-- นำเข้า Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    />
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Kanit:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS ทั้งหมดรวมไว้ในแท็ก style ตรงนี้ -->
     <style>
-        body{
-            background-color: #91ffb2;
+        /* ==========================================
+           RESET CSS & BASE STYLES
+           ========================================== */
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Roboto Mono';
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #87f5a9;
+            /* สีพื้นหลังเขียวมิ้นต์ */
+            font-family: 'Fira Code', 'Kanit', monospace, sans-serif;
+            color: #1a3d24;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 60px 20px 60px;
+        }
+
+        /* ==========================================
+           MAIN CONTAINER (GRID LAYOUT)
+           ========================================== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            align-items: flex-end;
+        }
+
+        /* ==========================================
+           HERO CONTENT (ฝั่งซ้าย)
+           ========================================== */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            color: #1a3d24;
+            margin-bottom: 25px;
+            /* ปรับเว้นระยะห่างด้านล่าง ดันข้อความล่างลงไป */
+            letter-spacing: -1px;
+
+            /* เพิ่มการขยับอิสระตรงนี้ได้ */
+            position: relative;
+            top: 70px;
+            /* ขยับขึ้น (-) หรือลง (+) */
+            left: 200px;
+            /* ขยับซ้าย (-) หรือขวา (+) */
+        }
+
+        .description {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #235230;
+            margin-bottom: 35px;
+            /* ปรับเว้นระยะห่างด้านล่าง ดันปุ่ม Follow Me ลงไป */
+
+            /* เพิ่มการขยับอิสระตรงนี้ได้ */
+            position: relative;
+            top: 70px;
+            /* ขยับขึ้น (-) หรือลง (+) */
+            left: 200px;
+            /* ขยับซ้าย (-) หรือขวา (+) */
+        }
+
+        .btn-follow {
+            display: inline-block;
+            background-color: #333333;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 16px 42px;
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            top: 70px;
+            /* ขยับขึ้น (-) หรือลง (+) */
+            left: 200px;
+            /* ขยับซ้าย (-) หรือขวา (+) */
+        }
+
+        .btn-follow:hover {
+            background-color: #1a1a1a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ==========================================
+           PREVIEW ROW (รูป 1-2 อยู่ใต้ปุ่ม Follow Me)
+           ========================================== */
+        .preview-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 80px;
+            width: 100%;
+        }
+
+        .preview-row .card {
+            flex: 1;
+            aspect-ratio: 16 / 9;
+            /* เปลี่ยนเป็น 16 / 9 ถ้าอยากได้รูปแนวกว้าง หรือ 1 / 1 สำหรับรูปสี่เหลี่ยมจัตุรัส */
+        }
+
+        /* ==========================================
+           SHOWCASE GRID (ฝั่งขวา)
+           ========================================== */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 20px;
+        }
+
+        .showcase-grid .card {
+            height: clamp(400px, 38vw, 900px);
+            /* เปลี่ยนตัวเลข 560px ให้สูงขึ้น เช่น 700px */
+        }
+
+        .card {
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: transparent;
+            /* ไม่ใส่สีพื้นหลัง */
+            box-shadow: none;
+            /* ลบเงาสีดำรอบๆ รูปออก */
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* เปลี่ยนเป็น contain เพื่อแสดงรูปเต็มๆ โดยไม่โดนตัดขอบ */
+            object-position: center;
+            display: block;
+        }
+
+        .card-tall-1 {
+            grid-column: 1 / 2;
+        }
+
+        .card-tall-2 {
+            grid-column: 2 / 3;
+        }
+
+        /* ==========================================
+           FOOTER SECTION
+           ========================================== */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #1a3d24;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .footer .disclaimer {
+            font-weight: 400;
+        }
+
+        .footer .creator {
+            font-weight: 600;
+        }
+
+        .footer .copyright {
+            font-weight: 600;
+        }
+
+        /* ==========================================
+           ปรับตำแหน่งรูปภาพแบบอิสระ (CUSTOM POSITIONS)
+           ========================================== */
+
+        /* รูปที่ 1 (ล่างซ้าย) */
+        .preview-row .card:nth-child(1) {
+            position: relative;
+            top: 50px;
+            /* ปรับขึ้น (-) หรือลง (+) */
+            left: 200px;
+            /* ปรับซ้าย (-) หรือขวา (+) */
+            z-index: 1;
+        }
+
+        /* รูปที่ 2 (ล่างขวา) */
+        .preview-row .card:nth-child(2) {
+            position: relative;
+            top: 50px;
+            left: 240px;
+            z-index: 1;
+        }
+
+        /* รูปที่ 3 (ฝั่งขวา ตัวซ้าย) */
+        .card-tall-1 {
+            position: relative;
+            top: 50px;
+            left: 120px;
+            z-index: 1;
+            /* เลขสูงกว่าจะลอยทับรูปอื่น */
+        }
+
+        /* รูปที่ 4 (ฝั่งขวา ตัวขวา) */
+        .card-tall-2 {
+            position: relative;
+            top: 50px;
+            left: -70px;
+            z-index: 1;
         }
     </style>
-  </head>
- 
-  <body>
-    <!-- ส่วนของ hero -->
-    <div class="hero">
-        <!-- sec-1 -->
-        <div class="sec-1">
- 
-        </div>
-        <!-- sec-2 -->
-        <div class="sec-2">
- 
-        </div>
-        <!-- sec-3 -->
-        <div class="sec-3">
- 
-        </div>
-    </div>
- 
-    <!-- ส่วนของ footer -->
-     <div class="footer">
-       
-     </div>
-  </body>
+</head>
+
+<body>
+
+    <main class="container">
+        <!-- ฝั่งซ้าย: ข้อความและปุ่ม -->
+        <section class="hero-content">
+            <h1 class="main-title">
+                My Web Design by<br>
+                HTML CSS
+            </h1>
+
+            <p class="description">
+                Lorem ipsum dolor sit amet,<br>
+                consectetur adipiscing elit.<br>
+                Cursus imperdiet sed id elementum.<br>
+                Quam vel aliquam sit vulputate.
+            </p>
+
+            <a href="#" class="btn-follow">Follow Me</a>
+
+            <!-- รูปที่ 1-2: อยู่ใต้ปุ่ม Follow Me เรียงกันแนวนอน -->
+            <div class="preview-row">
+                <div class="card card-wide-1">
+                    <img src="images/img1.png" alt="Preview 1">
+                </div>
+
+                <div class="card card-wide-2">
+                    <img src="images/img2.png" alt="Preview 2">
+                </div>
+            </div>
+        </section>
+
+        <!-- ฝั่งขวา: รูปภาพตัวอย่างเว็บ (รูปสูง 2 อัน) -->
+        <section class="showcase-grid">
+            <div class="card card-tall-1">
+                <img src="images/img3.png" alt="Preview 3">
+            </div>
+
+            <div class="card card-tall-2">
+                <img src="images/img4.png" alt="Preview 4">
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="disclaimer">(รูปและเนื้อหาทั้งหมดใช้เพื่อการศึกษาเท่านั้น)</p>
+        <p class="creator">Created by NinniN SAU</p>
+        <p class="copyright">Copyright © 2026 WoW WoW WoW</p>
+    </footer>
+
+</body>
+
 </html>
